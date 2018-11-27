@@ -65,13 +65,17 @@ var getTier = function(name,channelID)
             }else{
               let json_tier = JSON.parse(body)[0]
               console.log(json_tier)
+              if(json_tier){
               let tier = json_tier.tier
               let rank = json_tier.rank
+              let win = json_tier.wins
+              let lose = json_tier.losses
               bot.sendMessage({
                   to: channelID,
-                  message : "티어는 " + tier +" " + rank + " 입니다."});
-            }
+                  message : "티어는 " + tier +" " + rank + " 입니다. 이번 시즌 승리 " + win + " 회, " + lose + "회 패배했습니다. "});
+            }}
           });
-      }
+
+        }
     });
 }
